@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import useProducts from '../../hooks/useProduct';
 import { removeFromDb } from '../../utilities/fakedb';
@@ -6,8 +7,9 @@ import Cart from '../Cart/Cart';
 import ReviewItems from '../ReviewItems/ReviewItems';
 
 const Orders = () => {
-    const [products, setProducts] = useProducts();
+    const [products] = useProducts();
     const [cart, setCart] = useCart(products);
+    const navigate = useNavigate();
     const handleRemoveProduct = (product) => {
         const rest = cart.filter(pd => pd.id !== product.id)
         setCart(rest);
@@ -26,7 +28,10 @@ const Orders = () => {
                 }
             </div>
             <div className="cart-container">
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart}>
+
+                    <button onClick={() => navigate('/inventory')}>Proceed Checkout</button>
+                </Cart>
             </div>
         </div>
     );
