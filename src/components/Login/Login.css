@@ -2,6 +2,7 @@
     width: 500px;
     height: 600px;
     margin: 0 auto;
+    margin-top: 10px;
     border: 1px solid #95A0A7;
     box-sizing: border-box;
     border-radius: 8px;
@@ -40,9 +41,32 @@
     border-radius: 5px;
     border: none;
     font-size: 20px;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: rgba(198, 122, 7, 0.653);
 }
 
 .form-link {
     color: #FF9900;
     text-decoration: none;
+}
+
+.line-contain hr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+.sm-contain {
+    display: flex;
+    justify-content: center;
+}
+
+.sm-contain img {
+    width: 50px;
+
+
 }
