@@ -18,7 +18,7 @@ const Header = () => {
                 <Link to="/shop">Shop</Link>
                 <Link to="/orders">Orders</Link>
                 <Link to="/inventory">Inventory</Link>
-                <Link to='/shipment'>Shipment</Link>
+                {/*   <Link to='/shipment'>Shipment</Link> */}
                 <Link to="/about">About</Link>
                 {
                     user ? <button onClick={handleSignOut}>Sign Out</button>
