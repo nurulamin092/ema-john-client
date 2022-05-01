@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useCart from '../../hooks/useCart';
 // import useProducts from '../../hooks/useProduct';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
@@ -8,7 +9,7 @@ import './Shop.css';
 
 const Shop = () => {
     // const [products, setProducts] = useProducts();
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useCart();
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
@@ -34,19 +35,7 @@ const Shop = () => {
             .then(data => setProducts(data))
     }, []);
 
-    useEffect(() => {
-        const storedCart = getStoredCart();
-        const savedCart = [];
-        for (const id in storedCart) {
-            const addedProduct = products.find(product => product._id === id);
-            if (addedProduct) {
-                const quantity = storedCart[id];
-                addedProduct.quantity = quantity;
-                savedCart.push(addedProduct);
-            }
-        }
-        setCart(savedCart);
-    }, [products])
+
 
     const handleAddToCart = (selectedProduct) => {
         console.log(selectedProduct);
@@ -80,7 +69,7 @@ const Shop = () => {
                     {
                         [...Array(pageCount).keys()]
                             .map(number => <button className={page === number ? 'selected' : ''} onClick={() => setPage(number)}>
-                                {number + 1}
+                                {number}
                             </button>)
                     }
                     <select onChange={(e) => setSize(e.target.value)} name="" id="">

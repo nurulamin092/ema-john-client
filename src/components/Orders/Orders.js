@@ -8,7 +8,7 @@ import ReviewItems from '../ReviewItems/ReviewItems';
 
 const Orders = () => {
     const [products] = useProducts();
-    const [cart, setCart] = useCart(products);
+    const [cart, setCart] = useCart();
     const navigate = useNavigate();
     const handleRemoveProduct = (product) => {
         const rest = cart.filter(pd => pd._id !== product._id)
